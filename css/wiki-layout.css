@@ -7,8 +7,10 @@
   justify-content: space-between;
   padding: 0 32px;
   height: 56px;
-  background-color: var(--nav-bg-color);
-  border-bottom: 1px solid var(--divider-color);
+  background-color: color-mix(in srgb, var(--nav-bg-color) 76%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--divider-color) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   z-index: 10;
 }
 
@@ -28,11 +30,33 @@
   text-decoration: none;
   color: var(--font-default-color);
   font-size: 0.9rem;
-  transition: color 0.2s;
+  position: relative;
+  display: inline-block;
+  padding: 6px 2px;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
 }
 
 .nav-links a:hover {
   color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
 }
 
 /* 프로필 히어로 */
@@ -82,13 +106,21 @@ main {
   padding: 0 24px;
 }
 
+body {
+  background-color: var(--page-bg-color);
+}
+
 .content-section {
-  padding: 48px 0;
-  border-bottom: 1px solid var(--divider-color);
+  padding: 28px 28px;
+  margin: 26px 0;
+  border: 1px solid var(--divider-color);
+  border-radius: 22px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0 18px 42px rgba(60, 48, 33, 0.10);
 }
 
 .content-section:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid var(--divider-color);
 }
 
 .content-section h2 {
@@ -98,9 +130,22 @@ main {
 
 .content-section > p,
 .section-desc {
-  color: #666;
+  color: var(--muted-color);
   line-height: 1.8;
   margin-bottom: 24px;
+}
+
+.content-section a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--link-color) 60%, transparent);
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.content-section a:hover {
+  color: var(--primary-color);
+  border-color: color-mix(in srgb, var(--primary-color) 70%, transparent);
+  background-color: color-mix(in srgb, var(--primary-color) 12%, transparent);
 }
 
 /* 갤러리 그리드 */
@@ -115,6 +160,48 @@ main {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 4px;
+  cursor: zoom-in;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.gallery-grid img:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(60, 48, 33, 0.18);
+  filter: saturate(1.05);
+}
+
+/* 갤러리 풀스크린 프리뷰(hover) */
+.image-preview-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(29, 24, 16, 0.72);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 9999;
+}
+
+.image-preview-overlay.is-visible {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.image-preview-overlay img {
+  width: min(92vw, 980px);
+  height: min(86vh, 980px);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
+  transform: translateY(6px) scale(0.98);
+  transition: transform 220ms ease;
+  background: rgba(255, 248, 238, 0.9);
+}
+
+.image-preview-overlay.is-visible img {
+  transform: translateY(0) scale(1);
 }
 
 /* 인생 작품 카드 */
@@ -122,6 +209,15 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.works-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .work-card {
@@ -130,6 +226,16 @@ main {
   padding: 20px;
   border-radius: 8px;
   background-color: var(--card-bg-color);
+  border: 1px solid transparent;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.work-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(184, 141, 94, 0.35);
+  box-shadow: 0 14px 32px rgba(60, 48, 33, 0.14);
+  background-color: var(--card-hover-bg-color);
 }
 
 .work-thumbnail {
@@ -153,7 +259,7 @@ main {
 }
 
 .work-info p {
-  color: #666;
+  color: var(--muted-color);
   line-height: 1.6;
 }
 
@@ -162,6 +268,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* ID 선택자 사용 (요구사항) */
+#til {
+  scroll-margin-top: 72px;
 }
 
 .til-item {
@@ -173,7 +284,7 @@ main {
 
 .til-item time {
   font-size: 0.85rem;
-  color: #999;
+  color: color-mix(in srgb, var(--muted-color) 70%, transparent);
 }
 
 .til-item h3 {
@@ -182,7 +293,7 @@ main {
 }
 
 .til-item p {
-  color: #666;
+  color: var(--muted-color);
   line-height: 1.6;
 }
 
@@ -352,20 +463,42 @@ footer {
 
 /* 영상 삽입 */
 .work-card iframe,
-.work-card video {
+.work-card video,
+.work-iframe {
   width: 100%;
-  max-width: 480px;
-  aspect-ratio: 16 / 9;
   border: none;
   border-radius: 4px;
 }
 
+.work-iframe {
+  display: block;
+  height: 100%;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+.video-wrapper .work-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* 변수 */
 :root {
-  --primary-color: #4a7c59;
-  --nav-bg-color: #fff;
-  --hero-bg-color: #f8faf8;
-  --card-bg-color: #fafafa;
-  --divider-color: #e8e8e8;
-  --font-default-color: #333;
+  /* cream + brown/beige tone-on-tone */
+  --primary-color: #9a6b3e; /* 포인트 브라운 */
+  --nav-bg-color: #fff7ec; /* 아이보리 */
+  --hero-bg-color: #fbf1e3; /* 크림 */
+  --card-bg-color: #fffaf2; /* 카드 아이보리 */
+  --card-hover-bg-color: #fff2e3; /* 호버 크림 */
+  --divider-color: #ead8c3; /* 라인 베이지 */
+  --font-default-color: #2a2118; /* 진한 브라운 */
+  --muted-color: #6b5a48; /* 본문 톤다운 */
+  --link-color: #6e4a2a; /* 링크 브라운 */
+  --page-bg-color: #f7efe3; /* 전체 배경 크림 */
 }

@@ -4,69 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-    <!-- TODO: Open Graph 메타 태그를 설정하세요 -->
-    <!-- <meta property="og:title" content="페이지 제목" /> -->
-    <!-- <meta property="og:description" content="페이지 설명" /> -->
-    <!-- <meta property="og:image" content="./images/thumbnail.jpg" /> -->
+    <meta property="og:title" content="루디의 TIL (Today I Learn)" />
+    <meta property="og:description" content="루디의 자기소개, 갤러리, 인생 작품, 그리고 오늘 배운 내용을 기록하는 TIL 페이지" />
+    <meta property="og:image" content="./images/profile.jpeg" />
 
-    <title>Today I Learn</title>
+    <title>루디의 TIL(Today I learn)</title>
     <link rel="stylesheet" href="./css/main.css" />
     <script src="./js/index.js" defer></script>
   </head>
   <body>
-    <!-- 상단 내비게이션 -->
-    <nav class="top-nav">
-      <span class="nav-logo">My Page</span>
-      <ul class="nav-links">
-        <li><a href="#about">자기소개</a></li>
-        <li><a href="#gallery">갤러리</a></li>
-        <li><a href="#works">인생 작품</a></li>
-        <li><a href="#til">TIL</a></li>
-      </ul>
-    </nav>
+    <header>
+      <!-- 상단 내비게이션 -->
+      <nav class="top-nav" aria-label="페이지 내비게이션">
+        <span class="nav-logo">My Page</span>
+        <ul class="nav-links">
+          <li><a href="#about">자기소개</a></li>
+          <li><a href="#gallery">갤러리</a></li>
+          <li><a href="#works">인생 작품</a></li>
+          <li><a href="#til">TIL</a></li>
+        </ul>
+      </nav>
 
-    <!-- 프로필 히어로 -->
-    <section class="hero" id="about">
-      <div class="profile-card">
-        <div class="profile-image">
-          <!-- TODO: 프로필 이미지를 넣어주세요 -->
-          <!-- <img src="./images/profile.jpg" alt="프로필 사진" /> -->
+      <!-- 프로필 히어로 -->
+      <section class="hero" id="about" aria-labelledby="page-title">
+        <div class="profile-card">
+          <div class="profile-image">
+            <img src="./images/profile.jpeg" alt="루디의 프로필 사진" />
+          </div>
+          <div class="profile-info">
+            <h1 id="page-title">루디</h1>
+            <p class="tagline">안녕하세요~</p>
+          </div>
         </div>
-        <div class="profile-info">
-          <h1>닉네임</h1>
-          <p class="tagline">한 줄 소개를 작성해주세요.</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </header>
 
     <main>
       <!-- 자기소개 -->
       <section class="content-section">
         <h2>자기소개</h2>
-        <p>자기소개를 작성해주세요.</p>
-        <!-- TODO: 소개 글 안에 블로그, GitHub 등 관련 링크를 <a> 태그로 연결하세요 -->
+        <p>
+          농구랑 게임을 좋아합니다. 최근 들어 직접 하는 것 보다 보는걸 더 좋아하는 것 같네요. LCK 토크 대환영입니다. 
+          <br>
+          <br>
+          
+          요즘 플리가 질려 고민인데 좋은 노래 공유해주시면 감사하겠습니다 🙇‍♂️ 
+        </p>
+        <p>
+          꼼꼼히 관리하진 못했지만
+          <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          와
+          <a href="https://velog.io/" target="_blank" rel="noreferrer">블로그</a>
+          도 있답니다.
+        </p>
       </section>
 
       <!-- 기본 정보 -->
       <section class="content-section" id="info">
         <h2>기본 정보</h2>
-        <!-- TODO: 자신의 기본 정보를 표(<table>)로 정리하세요 -->
         <table class="info-table">
           <tr>
             <th>이름</th>
-            <td></td>
+            <td>김선우</td>
           </tr>
           <tr>
             <th>MBTI</th>
-            <td></td>
+            <td>INFJ</td>
           </tr>
           <tr>
             <th>취미</th>
-            <td></td>
+            <td>요리와 운동을 좋아합니다. <br>
+              좋아하는 것과 잘하는 건 다른 것 같아요. 얼마전 요리하다 손을 썰었거든요.. 🥲
+            </td>
           </tr>
           <tr>
             <th>좋아하는 음식</th>
-            <td></td>
+            <td>파스타(특히 오일 파스타)를 좋아해요. 흑백요리사 보고나서는 동파육도 좋아하게 됐는데 접하긴 어렵지만 정말 맛있는 것 같아요.</td>
           </tr>
         </table>
       </section>
@@ -74,33 +87,61 @@
       <!-- 나만의 갤러리 -->
       <section class="content-section" id="gallery">
         <h2>나만의 갤러리</h2>
-        <p class="section-desc">갤러리 부제를 작성해주세요. (예: 기억에 남는 여행지)</p>
+        <p class="section-desc">우리집 막내들을 소개합니다</p>
         <div class="gallery-grid">
-          <!-- TODO: 9장의 이미지를 배치하세요 -->
-          <!--
-          <img src="./images/gallery-1.jpg" alt="갤러리 이미지 1" />
-          <img src="./images/gallery-2.jpg" alt="갤러리 이미지 2" />
-          ...
-          -->
+          <img src="./images/joraeng-1.jpeg" alt="갤러리 이미지 1" />
+          <img src="./images/joraeng-2.jpeg" alt="갤러리 이미지 2" />
+          <img src="./images/joraeng-3.jpeg" alt="갤러리 이미지 3" />
+          <img src="./images/joraeng-4.jpeg" alt="갤러리 이미지 4" />
+          <img src="./images/yanggang-1.jpeg" alt="갤러리 이미지 5" />
+          <img src="./images/yanggang-2.jpeg" alt="갤러리 이미지 6" />
+          <img src="./images/yanggang-3.jpeg" alt="갤러리 이미지 7" />
+          <img src="./images/yanggang-4.jpeg" alt="갤러리 이미지 8" />
+          <img src="./images/joraeng-yanggang.jpeg" alt="갤러리 이미지 9" />
         </div>
       </section>
 
       <!-- 나를 울린 인생 작품 -->
       <section class="content-section" id="works">
         <h2>나를 울린 인생 작품</h2>
-        <div class="works-list">
-          <!-- TODO: 최소 2가지 작품을 소개하세요 -->
-          <!-- TODO: 작품 중 하나는 <video> 또는 <iframe>으로 영상을 삽입하세요 -->
-          <article class="work-card">
-            <div class="work-thumbnail">
-              <!-- 작품 이미지 -->
+        <ul class="works-list">
+          <li class="works-item">
+            <article class="work-card">
+              <div class="work-thumbnail">
+                <img src="./images/drama.webp" alt="드라마 폭싹 속았수다 포스터" />
+              </div>
+              <div class="work-info">
+                <h3>폭싹 속았수다</h3>
+                <p>
+                  넷플릭스 드라마 "폭싹 속았수다"는 1950년대 제주에서 태어난 애순이와 관식이가 보낸 생애를 사계절의 흐름 속에 담아낸 작품입니다. 특히 가족에 대한 이야기를 다루는 과정에서 철없이 행동하는 자식들의 모습이 세밀하게 묘사되는데, 자식들의 모습에서 제 모습이 겹쳐 보여 많은 생각이 들었습니다.
+                </p>
+              </div>
+            </article>
+          </li>
+          <li class="works-item">
+            <article class="work-card">
+              <div class="work-thumbnail">
+                <img src="./images/movie.webp" alt="영화 쥬라기 시리즈 이미지" />
+              </div>
+              <div class="work-info">
+                <h3>쥬라기 시리즈</h3>
+                <p>
+                  쥬라기 영화 시리즈를 좋아합니다 🦖 그래픽 덩어리인걸 알면서도 어릴 적 로망인 공룡은 언제봐도 즐겁더라구요. 서사와 개연성을 중요시 하는 분들에겐 비추천합니다. 생각 없이 볼 땐 아주 재밌어요. 저는 모든 영화 브금을 통틀어 쥬라기 공원의 브금을 제일 좋아합니다.
+                </p>
+              </div>
+            </article>
+            <div class="video-wrapper">
+              <iframe
+                class="work-iframe"
+                title="Jurassic Park (YouTube)"
+                src="https://www.youtube-nocookie.com/embed/HQxEHIAXUkk?start=73"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
             </div>
-            <div class="work-info">
-              <h3>작품 제목</h3>
-              <p>작품에 대한 설명을 작성해주세요.</p>
-            </div>
-          </article>
-        </div>
+          </li>
+        </ul>
       </section>
 
       <!-- TIL (Today I Learned) -->
@@ -130,7 +171,6 @@
 
         <!-- TIL 목록: 폼으로 등록하면 여기에 항목이 추가됩니다 -->
         <div class="til-list" id="til-list">
-          <!-- 아래는 예시 항목입니다. 자유롭게 수정하거나 삭제하세요 -->
           <article class="til-item">
             <time>2026-03-15</time>
             <h3>HTML 시멘틱 태그</h3>
